@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexuma Agencia Creativa</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --card: #f3f4f6;
+      --hover: linear-gradient(#13a3e6, #9f10ca);
+    }
+    body.dark {
+      --bg: #1f2937;
+      --text: #f9fafb;
+      --card: #374151;
+      --header: #000000;
+      --nav: #111827;
+      --hover: #4b5563;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url(recursos/fondo.jpg);
+      background-size: cover;
+      background-attachment: local;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--header);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header button {
+      padding: 0.5rem 1rem;
+      background: var(--hover);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    nav {
+      width: 220px;
+      background: var(--nav);
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--hover);
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      background: var(--bg);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th {
+      padding: 10px;
+      color: #f3f4f6;
+      background-color: #09147e;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    img.thumb {
+      width: 80px;
+      border-radius: 6px;
+    }
+
+    .dashboard {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    .blog-post {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    button {
+      padding: 10px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: var(--header);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="recursos/logo.png" width="10%">
+    <button onclick="toggleDarkMode()">🌙 Modo Oscuro</button>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="#" class="active" data-seccion="colaboradores">Colaboradores</a>
+      <a href="#" data-seccion="portafolio">Portafolio</a>
+      <a href="#" data-seccion="dashboard">Dashboard</a>
+      <a href="#" data-seccion="blog">Blog</a>
+      <a href="#" data-seccion="contacto">Contacto</a>
+    </nav>
+    <main id="contenido">
+      <!-- Contenido dinámico aquí -->
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Nexuma Agencia Creativa - Todos los derechos reservados. <br>
+    Integrantes: Alama Chinchay, José Manuel - Alarcón Santillán, Andrea Selenne - Matta Bernaola, Óscar Francisco - Silvera Nuñez, Juan David.</p>
+  </footer>
+
+  <script>
+    const datos = {
+      colaboradores: [
+        { nombre: "José Manuel Alama Chinchay", rol: "Diseñador Gráfico", correo: "jalama@nexumaagencia.com" },
+        { nombre: "Andrea Selenne Alarcón Santillán", rol: "Artista Visual", correo: "salarcon@agencia.com" },
+        { nombre: "Óscar Francisco Matta Bernaola", rol: "Comunicador Audiovisual", correo: "omatta@agencia.com" },
+        { nombre: "Juan David Silvera Nuñez", rol: "Director de Arte y Diseño Gráfico", correo: "jsilvera@agencia.com" }
+      ],
+      portafolio: [
+        { titulo: "Brand A", cliente: "Empresa A", tipo: "Logo", imagen: "https://via.placeholder.com/80" },
+        { titulo: "Web B", cliente: "Negocio B", tipo: "Web", imagen: "https://via.placeholder.com/80" }
+      ],
+      blog: [
+        { titulo: "Tendencias 2025", contenido: "Exploramos lo nuevo en diseño web para el futuro." },
+        { titulo: "Psicología del color", contenido: "Cómo elegir una paleta que comunique tu mensaje." }
+      ],
+      dashboard: {
+        proyectos: 24,
+        clientes: 18,
+        entregas: 30
+      }
+    };
+
+    const secciones = {
+      colaboradores: () => `
+        <h2>Colaboradores</h2>
+        <table>
+          <tr><th>Nombre</th><th>Rol</th><th>Correo</th></tr>
+          ${datos.colaboradores.map(c => `<tr><td>${c.nombre}</td><td>${c.rol}</td><td>${c.correo}</td></tr>`).join('')}
+        </table>
+      `,
+      portafolio: () => `
+        <h2>Portafolio</h2>
+        <table>
+          <tr><th>Imagen</th><th>Título</th><th>Cliente</th><th>Tipo</th></tr>
+          ${datos.portafolio.map(p => `<tr>
+            <td><img src="${p.imagen}" class="thumb" /></td>
+            <td>${p.titulo}</td><td>${p.cliente}</td><td>${p.tipo}</td></tr>`).join('')}
+        </table>
+      `,
+      dashboard: () => `
+        <h2>Dashboard</h2>
+        <div class="dashboard">
+          <div class="card">Proyectos<br><strong>${datos.dashboard.proyectos}</strong></div>
+          <div class="card">Clientes<br><strong>${datos.dashboard.clientes}</strong></div>
+          <div class="card">Entregas<br><strong>${datos.dashboard.entregas}</strong></div>
+        </div>
+        <canvas id="grafico" style="margin-top:2rem;max-width:500px;"></canvas>
+      `,
+      blog: () => `
+        <h2>Blog</h2>
+        ${datos.blog.map(b => `<div class="blog-post"><h3>${b.titulo}</h3><p>${b.contenido}</p></div>`).join('')}
+      `,
+      contacto: () => `
+        <h2>Contacto</h2>
+        <form onsubmit="event.preventDefault(); alert('Mensaje enviado 👍');">
+          <input type="text" placeholder="Tu nombre" required />
+          <input type="email" placeholder="Tu correo" required />
+          <textarea rows="4" placeholder="Tu mensaje..." required></textarea>
+          <button type="submit">Enviar mensaje</button>
+        </form>
+      `
+    };
+
+    const contenido = document.getElementById("contenido");
+    const links = document.querySelectorAll("nav a");
+
+    function cargar(seccion) {
+      contenido.innerHTML = secciones[seccion]();
+      links.forEach(l => l.classList.remove("active"));
+      document.querySelector(`[data-seccion="${seccion}"]`).classList.add("active");
+
+      if (seccion === "dashboard") {
+        setTimeout(() => {
+          const ctx = document.getElementById("grafico").getContext("2d");
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Proyectos', 'Clientes', 'Entregas'],
+              datasets: [{
+                label: 'Estadísticas',
+                data: [datos.dashboard.proyectos, datos.dashboard.clientes, datos.dashboard.entregas],
+                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: { beginAtZero: true }
+              }
+            }
+          });
+        }, 100);
+      }
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        cargar(link.dataset.seccion);
+      });
+    });
+
+    // Modo oscuro
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("modoOscuro", document.body.classList.contains("dark"));
+    }
+
+    if (localStorage.getItem("modoOscuro") === "true") {
+      document.body.classList.add("dark");
+    }
+
+    // Cargar sección inicial
+    cargar("colaboradores");
+  </script>
+</body>
+</html>

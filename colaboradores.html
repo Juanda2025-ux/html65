@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexuma | Agencia Creativa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #0f0f1a;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1a1a2e;
+      padding: 1rem 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: #00f7ff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f0f0f0;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00f7ff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      border-bottom: 1px solid #333;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #00f7ff;
+    }
+
+    .colaboradores, .portafolio, .blog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #1e1e2f;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+    }
+
+    input, textarea, button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #00f7ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00d8e0;
+    }
+
+    footer {
+      background: #1a1a2e;
+      color: #ccc;
+      text-align: center;
+      padding: 1rem 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>NEXUMA</h1>
+      <ul>
+        <li><a href="#inicio" section="inicio">Inicio</a></li>
+        <li><a href="#nosotros" section="nosotros">Nosotros</a></li>
+        <li><a href="#colaboradores" section="colaboradores">Colaboradores</a></li>
+        <li><a href="#portafolio" section="portafolio">Portafolio</a></li>
+        <li><a href="#blog" section="blog">Blog</a></li>
+        <li><a href="#formulario" section="formulario">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio">
+    <h2>Inicio</h2>
+    <p>Bienvenido a Nexuma, tu agencia creativa especializada en diseño gráfico, branding y desarrollo web con enfoque futurista e innovador.</p>
+  </section>
+
+  <section id="nosotros">
+    <h2>Nosotros</h2>
+    <p>En Nexuma creemos en el poder de la creatividad para transformar marcas. Nuestro equipo multidisciplinario crea soluciones visuales y digitales de alto impacto.</p>
+  </section>
+
+  <section id="colaboradores">
+    <h2>Colaboradores</h2>
+    <div class="colaboradores">
+      <div class="card">
+        <img src="https://via.placeholder.com/250x150" alt="Colaborador 1">
+        <p><strong>Andrea Torres</strong></p>
+        <p>Diseñadora Gráfica</p>
+        <p>📞 987654321</p>
+        <p>✉️ andrea@nexuma.com</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/250x150" alt="Colaborador 2">
+        <p><strong>Jorge Medina</strong></p>
+        <p>Desarrollador Web</p>
+        <p>📞 912345678</p>
+        <p>✉️ jorge@nexuma.com</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/250x150" alt="Colaborador 3">
+        <p><strong>Lucía Herrera</strong></p>
+        <p>Brand Strategist</p>
+        <p>📞 976543210</p>
+        <p>✉️ lucia@nexuma.com</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/250x150" alt="Colaborador 4">
+        <p><strong>David Núñez</strong></p>
+        <p>UI/UX Designer</p>
+        <p>📞 965432198</p>
+        <p>✉️ david@nexuma.com</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portafolio">
+    <h2>Portafolio</h2>
+    <div class="portafolio">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Proyecto 1">
+        <p><strong>Proyecto Branding</strong> - Rediseño de identidad para marca de moda.</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Proyecto 2">
+        <p><strong>Landing Page</strong> - Sitio web responsivo para startup tecnológica.</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Proyecto 3">
+        <p><strong>Social Media Pack</strong> - Diseño de campañas para redes sociales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <div class="blog">
+      <div class="card">
+        <h3>Diseño Futurista: Tendencias 2025</h3>
+        <p>Explora las nuevas olas visuales que marcarán el diseño gráfico en los próximos años.</p>
+      </div>
+      <div class="card">
+        <h3>Cómo crear una marca memorable</h3>
+        <p>Descubre los pasos clave para construir una identidad visual sólida desde cero.</p>
+      </div>
+      <div class="card">
+        <h3>UI/UX: Más allá de la estética</h3>
+        <p>El diseño centrado en el usuario como pilar de experiencias digitales efectivas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="formulario">
+    <h2>Contacto</h2>
+    <form>
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="tel" placeholder="Celular">
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea rows="4" placeholder="Mensaje"></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Nexuma Agencia Creativa. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
